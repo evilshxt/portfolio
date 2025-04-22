@@ -5,7 +5,7 @@ const projects = [
         image: "css/assets/todoana.png",
         tech: ["Bootstrap", "HTML", "Vanilla JS-ES6", "CSS 3"],
         demoUrl: "evilshxt.github.io/todo/index.html",
-        codeUrl: "#"
+        codeUrl: "null.html"
     },
     {
         title: "Landing Page For Coffee Shop",
@@ -13,7 +13,7 @@ const projects = [
         image: "css/assets/brew.png",
         tech: ["Bootstrap", "HTML", "Tailwind CSS"],
         demoUrl: "https://evilshxt.github.io/brewhaven/",
-        codeUrl: "#"
+        codeUrl: "null.html"
     },
     {
         title: "Landing Page For Music Studio",
@@ -21,7 +21,7 @@ const projects = [
         image: "css/assets/afro.png",
         tech: ["Bootstrap", "HTML", "Tailwind CSS", "AOS.js"],
         demoUrl: "https://evilshxt.github.io/afrocity/index.html",
-        codeUrl: "#"
+        codeUrl: "null.html"
     }
 ];
 

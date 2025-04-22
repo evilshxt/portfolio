@@ -4,7 +4,7 @@ const projects = [
         description: "A full-featured TO-DO application with advanced functionality including persistent storage, theme switching, and analytics to track your productivity.",
         image: "css/assets/todoana.png",
         tech: ["Bootstrap", "HTML", "Vanilla JS-ES6", "CSS 3"],
-        demoUrl: "evilshxt.github.io/todo/index.html",
+        demoUrl: "https://evilshxt.github.io/todo/",
         codeUrl: "null.html"
     },
     {

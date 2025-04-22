@@ -1,0 +1,247 @@
+/* Projects Section */
+.projects-title {
+    font-size: 3rem;
+    color: var(--accent);
+    text-align: center;
+    margin: 1rem auto 2.5rem;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+}
+
+.projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 2rem;
+    padding: 1rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.project-card {
+    background: var(--bg);
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    opacity: 0;
+    transform: translateY(20px);
+    display: flex;
+    flex-direction: column;
+}
+
+.project-card.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.project-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(var(--accent-rgb), 0.2);
+}
+
+.project-image {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    position: relative;
+}
+
+.project-image::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(to bottom, transparent 60%, rgba(0, 0, 0, 0.7));
+    transition: all 0.3s ease;
+}
+
+.project-card:hover .project-image::after {
+    background: linear-gradient(to bottom, transparent 30%, rgba(0, 0, 0, 0.8));
+}
+
+.project-content {
+    padding: 1.5rem;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.project-title {
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+    color: var(--accent);
+}
+
+.project-description {
+    margin-bottom: 1rem;
+    color: var(--text);
+    flex-grow: 1;
+}
+
+.tech-badges {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.tech-badge {
+    background: rgba(var(--accent-rgb), 0.2);
+    color: var(--accent);
+    padding: 0.3rem 0.8rem;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    transition: all 0.3s ease;
+    transform: translateY(10px);
+    opacity: 0;
+}
+
+.project-card:hover .tech-badge {
+    transform: translateY(0);
+    opacity: 1;
+}
+
+.project-links {
+    display: flex;
+    gap: 1rem;
+    margin-top: auto;
+}
+
+.project-link {
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    flex-grow: 1;
+    text-align: center;
+}
+
+.demo-link {
+    background: var(--accent);
+    color: var(--bg);
+}
+
+.code-link {
+    background: transparent;
+    color: var(--accent);
+    border: 2px solid var(--accent);
+}
+
+.project-link:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 10px rgba(var(--accent-rgb), 0.2);
+}
+
+/* Add to project.css */
+#projects {
+    min-height: 100vh;
+    padding-bottom: 3rem;
+}
+
+.projects-grid {
+    /* Add max-height and padding if needed */
+    padding-bottom: 2rem;
+}
+
+/* Standalone Projects Page Styles */
+.projects-standalone {
+    padding: 4rem 2rem;
+    min-height: 100vh;
+    background-color: var(--bg-alt);
+}
+
+.back-button {
+    position: fixed;
+    top: 2rem;
+    left: 2rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--accent);
+    text-decoration: none;
+    font-weight: 600;
+    z-index: 100;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+    background-color: rgba(var(--accent-rgb), 0.1);
+}
+
+.back-button:hover {
+    background-color: rgba(var(--accent-rgb), 0.2);
+    transform: translateY(-2px);
+}
+
+/* Title Animation */
+.projects-title {
+    opacity: 0;
+    transform: translateY(30px);
+    animation: fadeInUp 1s ease-out forwards;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Project Card Staggered Animation */
+.projects-grid {
+    perspective: 1000px;
+}
+
+.project-card {
+    opacity: 0;
+    transform: translateY(20px) rotateX(5deg);
+    transition: all 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    animation-fill-mode: forwards;
+}
+
+.project-card.visible {
+    opacity: 1;
+    transform: translateY(0) rotateX(0);
+}
+
+/* Animation delays for staggered effect */
+.project-card:nth-child(1) { animation-delay: 0.2s; }
+.project-card:nth-child(2) { animation-delay: 0.4s; }
+.project-card:nth-child(3) { animation-delay: 0.6s; }
+.project-card:nth-child(4) { animation-delay: 0.8s; }
+.project-card:nth-child(5) { animation-delay: 1.0s; }
+.project-card:nth-child(6) { animation-delay: 1.2s; }
+
+/* Responsive adjustments */
+@media (max-width: 1023px) {
+    .projects-grid {
+        grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    }
+}
+
+@media (max-width: 767px) {
+    .projects-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .project-title {
+        font-size: 1.3rem;
+    }
+    
+    .back-button {
+        top: 1rem;
+        left: 1rem;
+        font-size: 0.9rem;
+        padding: 0.3rem 0.8rem;
+    }
+    
+    .projects-standalone {
+        padding: 6rem 1rem 2rem;
+    }
+}

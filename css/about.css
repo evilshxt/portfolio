@@ -1,0 +1,220 @@
+/* Base Styles */
+.section {
+    padding: 4rem 2rem;
+    opacity: 0;
+    transform: translateY(50px);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.section.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Improved title animation */
+.about-title {
+    font-size: 3rem;
+    color: var(--accent);
+    text-align: center;
+    margin: 1rem auto 2.5rem;
+    font-family: 'Montserrat', sans-serif; /* Add a nice modern font */
+    font-weight: 600;
+    width: fit-content;
+    position: relative;
+    /* No animation initially - will be added via JS */
+}
+
+/* Better typing animation that centers at the end */
+.typing-animation {
+    display: inline-block;
+    overflow: hidden;
+    white-space: nowrap;
+    border-right: 0.15em solid var(--accent);
+    margin: 0 auto;
+    animation: 
+        typing 3.5s steps(40, end),
+        blink-caret 0.75s step-end infinite;
+    transition: all 0.5s ease-out;
+}
+
+/* After typing animation completes */
+.typing-complete {
+    border-right: none;
+    text-align: center;
+    display: block;
+    white-space: normal;
+    animation: none;
+    margin: 0 auto;
+}
+
+.profile-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 2rem auto;
+    flex-wrap: wrap;
+    max-width: 900px;
+}
+
+/* Improved profile image styling - animation controlled by JS */
+.profile-image {
+    width: 180px;
+    height: 180px;
+    border-radius: 50%;
+    margin-right: 2rem;
+    opacity: 0;
+    transform: translateX(-50px);
+    transition: opacity 1s ease, transform 1s ease;
+    border: 3px solid var(--accent);
+    box-shadow: 0 0 20px rgba(var(--accent-rgb, 255, 43, 43), 0.3);
+    object-fit: cover;
+}
+
+/* Improved intro text styling - animation controlled by JS */
+.intro-text {
+    font-size: 1.2rem;
+    line-height: 1.6;
+    max-width: 600px;
+    opacity: 0;
+    transform: translateX(50px);
+    transition: opacity 1s ease, transform 1s ease;
+}
+
+/* Animation classes that will be added via JavaScript */
+.fade-in {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+/* Section Content */
+.section-content {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.section.visible .section-content {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Skills Section Styles */
+.skills {
+    margin-top: 3rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+
+.skills h3 {
+    margin-bottom: 1.5rem;
+    color: var(--accent);
+    position: relative;
+    padding-bottom: 0.5rem;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.skills h3::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 50px;
+    height: 3px;
+    background-color: var(--accent);
+}
+
+.skills ul {
+    list-style-type: none;
+    padding: 0;
+    width: 100%;
+    max-width: 600px;
+}
+
+.skills li {
+    font-size: 1.1rem;
+    margin: 1.5rem 0;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+
+/* Progress Bar Styles */
+.progress-container {
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    overflow: hidden;
+    margin: 0.5rem 0;
+    height: 15px;
+    position: relative;
+    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.2);
+}
+
+.progress-bar {
+    height: 100%;
+    background: linear-gradient(90deg, var(--accent), var(--accent) 70%, rgba(255, 255, 255, 0.7));
+    width: 0;
+    transition: width 1.5s cubic-bezier(0.1, 0.5, 0.1, 1);
+    position: relative;
+    border-radius: 10px;
+}
+
+.progress-bar::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(to bottom, 
+                rgba(255, 255, 255, 0.3) 0%, 
+                rgba(255, 255, 255, 0.1) 50%, 
+                transparent 100%);
+    pointer-events: none;
+}
+
+.progress-percentage {
+    position: absolute;
+    right: 0;
+    top: -1.5rem;
+    font-size: 0.9rem;
+    font-weight: bold;
+    color: var(--accent);
+}
+
+/* Animation keyframes */
+@keyframes typing {
+    from { width: 0 }
+    to { width: 100% }
+}
+
+@keyframes blink-caret {
+    from, to { border-color: transparent }
+    50% { border-color: var(--accent) }
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .profile-container {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .profile-image {
+        margin: 0 auto 2rem;
+    }
+    
+    .intro-text {
+        text-align: center;
+    }
+    
+    .about-title {
+        font-size: 2.5rem;
+    }
+}

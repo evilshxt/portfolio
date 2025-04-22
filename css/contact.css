@@ -1,0 +1,518 @@
+/* Enhanced Contact Section Styles with Side-by-Side Layout */
+#contact {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 3rem 2rem;
+}
+
+.contact-container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: row;
+    align-items: stretch;
+    gap: 2rem;
+}
+
+.contact-title {
+    font-size: 2.5rem;
+    color: var(--accent);
+    margin-bottom: 2rem;
+    font-family: var(--font-family-title);
+    font-weight: 600;
+    text-align: center;
+    position: relative;
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+#contact.visible .contact-title {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.contact-title::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 3px;
+    background-color: var(--accent);
+    animation: pulse 2s infinite;
+}
+
+/* Left Side: Contact Info */
+.contact-info {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 1rem;
+    opacity: 0;
+    transform: translateX(-30px);
+    transition: opacity 0.8s ease 0.2s, transform 0.8s ease 0.2s;
+}
+
+#contact.visible .contact-info {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+/* Contact Intro */
+.contact-intro {
+    max-width: 100%;
+    margin-bottom: 2rem;
+}
+
+.contact-tagline {
+    font-size: 1.8rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+    font-family: var(--font-family-title);
+}
+
+.contact-tagline .highlight {
+    color: var(--accent);
+    position: relative;
+    display: inline-block;
+}
+
+.contact-tagline .highlight::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    bottom: -3px;
+    left: 0;
+    background-color: var(--accent);
+    transform: scaleX(0);
+    transform-origin: bottom right;
+    transition: transform 0.5s ease;
+}
+
+#contact.visible .contact-tagline .highlight::after {
+    transform: scaleX(1);
+    transform-origin: bottom left;
+    transition-delay: 1s;
+}
+
+.contact-description {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    opacity: 0.9;
+}
+
+/* Social Links - Now on the left side */
+.social-links {
+    display: flex;
+    justify-content: flex-start;
+    gap: 1rem;
+    margin-top: auto;
+}
+
+.social-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    background-color: var(--bg-alt);
+    color: var(--text);
+    transition: all 0.3s ease;
+    position: relative;
+    border: 2px solid rgba(var(--accent-rgb), 0.3);
+}
+
+.social-icon::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: 50%;
+    padding: 2px;
+    background: linear-gradient(45deg, transparent, var(--accent), transparent);
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.social-icon:hover {
+    transform: translateY(-5px);
+    color: var(--accent);
+}
+
+.social-icon:hover::before {
+    opacity: 1;
+    animation: rotate 2s linear infinite;
+}
+
+.social-icon svg {
+    width: 20px;
+    height: 20px;
+    transition: all 0.3s ease;
+}
+
+/* Right Side: Form Wrapper with Animated Border */
+.form-wrapper {
+    flex: 1;
+    position: relative;
+    padding: 1.5rem;
+    opacity: 0;
+    transform: translateX(30px);
+    transition: opacity 0.8s ease 0.4s, transform 0.8s ease 0.4s;
+}
+
+#contact.visible .form-wrapper {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+/* Animated Border Lines */
+.border-line {
+    position: absolute;
+    background-color: var(--accent);
+}
+
+.border-line.top, .border-line.bottom {
+    height: 2px;
+    width: 100%;
+    transform: scaleX(0);
+}
+
+.border-line.left, .border-line.right {
+    width: 2px;
+    height: 100%;
+    transform: scaleY(0);
+}
+
+.border-line.top {
+    top: 0;
+    left: 0;
+    transform-origin: left;
+}
+
+.border-line.right {
+    top: 0;
+    right: 0;
+    transform-origin: top;
+}
+
+.border-line.bottom {
+    bottom: 0;
+    right: 0;
+    transform-origin: right;
+}
+
+.border-line.left {
+    bottom: 0;
+    left: 0;
+    transform-origin: bottom;
+}
+
+#contact.visible .border-line.top {
+    animation: expandHorizontal 0.8s ease-out 0.6s forwards;
+}
+
+#contact.visible .border-line.right {
+    animation: expandVertical 0.8s ease-out 1s forwards;
+}
+
+#contact.visible .border-line.bottom {
+    animation: expandHorizontal 0.8s ease-out 1.4s forwards;
+}
+
+#contact.visible .border-line.left {
+    animation: expandVertical 0.8s ease-out 1.8s forwards;
+}
+
+/* Form Styles */
+#contact-form {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.form-group {
+    position: relative;
+}
+
+.form-group input,
+.form-group textarea {
+    width: 100%;
+    padding: 1rem;
+    border-radius: 8px;
+    border: 2px solid rgba(var(--accent-rgb), 0.3);
+    background-color: var(--bg-alt);
+    color: var(--text);
+    font-size: 1rem;
+    transition: all 0.3s ease;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: var(--accent);
+    box-shadow: 0 0 0 3px rgba(var(--accent-rgb), 0.2);
+}
+
+.form-group textarea {
+    min-height: 120px;
+    max-height: 150px;
+    resize: vertical;
+}
+
+.form-group label {
+    position: absolute;
+    left: 1rem;
+    top: 1rem;
+    color: var(--text);
+    opacity: 0.7;
+    transition: all 0.3s ease;
+    pointer-events: none;
+    background-color: var(--bg-alt);
+    padding: 0 0.5rem;
+}
+
+.form-group input:focus + label,
+.form-group input:not(:placeholder-shown) + label,
+.form-group textarea:focus + label,
+.form-group textarea:not(:placeholder-shown) + label {
+    top: -0.6rem;
+    left: 0.8rem;
+    font-size: 0.8rem;
+    opacity: 1;
+    color: var(--accent);
+}
+
+#contact-form button {
+    padding: 0.8rem 2rem;
+    background-color: var(--accent);
+    color: var(--bg);
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    align-self: flex-end;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    position: relative;
+    overflow: hidden;
+}
+
+#contact-form button::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(255, 255, 255, 0.2),
+        transparent
+    );
+    transition: all 0.6s ease;
+}
+
+#contact-form button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(var(--accent-rgb), 0.3);
+}
+
+#contact-form button:hover::before {
+    left: 100%;
+}
+
+#contact-form button svg {
+    transition: transform 0.3s ease;
+}
+
+#contact-form button:hover svg {
+    transform: rotate(-45deg);
+}
+
+/* Form message notification */
+#form-message {
+    text-align: center;
+    font-size: 1rem;
+    padding: 0.8rem;
+    border-radius: 8px;
+    margin-top: 1rem;
+    transition: all 0.3s ease;
+    background-color: var(--bg-alt);
+    border-left: 4px solid;
+}
+
+#form-message.success {
+    border-color: #4CAF50;
+    color: #4CAF50;
+}
+
+#form-message.error {
+    border-color: #F44336;
+    color: #F44336;
+}
+
+/* Additional Animations */
+@keyframes pulse {
+    0%, 100% {
+        opacity: 0.6;
+    }
+    50% {
+        opacity: 1;
+    }
+}
+
+@keyframes expandHorizontal {
+    0% {
+        transform: scaleX(0);
+    }
+    100% {
+        transform: scaleX(1);
+    }
+}
+
+@keyframes expandVertical {
+    0% {
+        transform: scaleY(0);
+    }
+    100% {
+        transform: scaleY(1);
+    }
+}
+
+@keyframes rotate {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+/* Responsive Styles */
+@media (max-width: 900px) {
+    .contact-container {
+        flex-direction: column;
+        gap: 2rem;
+    }
+    
+    .contact-info, .form-wrapper {
+        width: 100%;
+        transform: translateY(30px);
+        transform: translateX(0);
+    }
+    
+    #contact.visible .contact-info,
+    #contact.visible .form-wrapper {
+        transform: translateY(0);
+    }
+    
+    .social-links {
+        justify-content: center;
+        margin-bottom: 1rem;
+    }
+    
+    .contact-tagline {
+        font-size: 1.5rem;
+        text-align: center;
+    }
+    
+    .contact-description {
+        text-align: center;
+    }
+    
+    #contact-form button {
+        width: 100%;
+    }
+}
+
+@media (max-width: 600px) {
+    .contact-title {
+        font-size: 2rem;
+    }
+    
+    .contact-tagline {
+        font-size: 1.3rem;
+    }
+    
+    .form-wrapper {
+        padding: 1rem;
+    }
+    
+    .form-group input,
+    .form-group textarea {
+        padding: 0.8rem;
+    }
+}
+
+/* Add these styles to your contact.css file */
+
+/* Form validation error styles */
+.form-group input.error,
+.form-group textarea.error {
+  border-color: #f44336;
+  box-shadow: 0 0 0 2px rgba(244, 67, 54, 0.2);
+}
+
+.input-error {
+  color: #f44336;
+  font-size: 0.8rem;
+  margin-top: 0.5rem;
+  position: absolute;
+  left: 0;
+  bottom: -1.5rem;
+  animation: fadeIn 0.3s ease;
+}
+
+/* More visible error message */
+#form-message.error {
+  background-color: rgba(244, 67, 54, 0.1);
+  border-left: 4px solid #F44336;
+  color: #F44336;
+  padding: 1rem;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+#form-message.success {
+  background-color: rgba(76, 175, 80, 0.1);
+  border-left: 4px solid #4CAF50;
+  color: #4CAF50;
+  padding: 1rem;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Spinner animation for loading state */
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+.spinner {
+  animation: spin 1s linear infinite;
+}
+
+/* Add a shake animation for error states */
+@keyframes shakeError {
+  0%, 100% { transform: translateX(0); }
+  25% { transform: translateX(-5px); }
+  75% { transform: translateX(5px); }
+}
+
+.form-group input.error:focus,
+.form-group textarea.error:focus {
+  animation: shakeError 0.4s ease-in-out;
+}

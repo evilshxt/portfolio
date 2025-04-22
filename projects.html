@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Wednesday - Projects</title>
+  <!-- Main stylesheets -->
+  <link rel="stylesheet" href="css/styles.css" />
+  <link rel="stylesheet" href="css/project.css" />
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Press+Start+2P&display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Montserrat:wght@500;600;700&family=Press+Start+2P&display=swap" rel="stylesheet"/>
+</head>
+<body>
+  <!-- Back button -->
+  <a href="index.html" class="back-button">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="var(--accent)" width="24" height="24">
+      <path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z"/>
+    </svg>
+    Back to Portfolio
+  </a>
+
+  <!-- Projects Section -->
+  <main class="projects-standalone">
+    <div class="section-content">
+      <h2 class="projects-title">My Projects</h2>
+      <div class="projects-grid">
+        <!-- Project 1 -->
+        <div class="project-card">
+            <div class="project-image-container">
+                <img src="css/assets/todoana.png" 
+                    alt="Advanced TO-DO Website" class="project-image">
+            </div>
+            <div class="project-content">
+                <h3 class="project-title">Advanced TO-DO Website</h3>
+                <p class="project-description">
+                    A full-featured TO-DO application with advanced functionality including persistent storage, theme switching, and analytics to track your productivity.
+                </p>
+                <div class="tech-badges">
+                    <span class="tech-badge">Bootstrap</span>
+                    <span class="tech-badge">HTML</span>
+                    <span class="tech-badge">Vanilla JS-ES6</span>
+                    <span class="tech-badge">CSS 3</span>
+                </div>
+                <div class="project-links">
+                    <a href="evilshxt.github.io/todo/index.html" class="project-link demo-link" target="_blank">Live Demo</a>
+                    <a href="#" class="project-link code-link" target="_blank">View Code</a>
+                </div>
+            </div>
+        </div>
+        <!-- Project 2 -->
+        <div class="project-card">
+            <div class="project-image-container">
+                <img src="css/assets/brew.png" 
+                    alt="Landing Page For Coffee Shop" class="project-image">
+            </div>
+            <div class="project-content">
+                <h3 class="project-title">Landing Page For Coffee Shop</h3>
+                <p class="project-description">
+                    A responsive landing page for a coffee shop showcasing their products, services, and ambiance with modern design elements.
+                </p>
+                <div class="tech-badges">
+                    <span class="tech-badge">Bootstrap</span>
+                    <span class="tech-badge">HTML</span>
+                    <span class="tech-badge">Tailwind CSS</span>
+                </div>
+                <div class="project-links">
+                    <a href="https://evilshxt.github.io/brewhaven/" class="project-link demo-link" target="_blank">Live Demo</a>
+                    <a href="#" class="project-link code-link" target="_blank">View Code</a>
+                </div>
+            </div>
+          </div>
+          <!-- Project 3 -->
+          <div class="project-card">
+            <div class="project-image-container">
+                <img src="css/assets/afro.png" 
+                    alt="Landing Page For Music Studio" class="project-image">
+            </div>
+            <div class="project-content">
+                <h3 class="project-title">Landing Page For Music Studio</h3>
+                <p class="project-description">
+                    An engaging landing page for a music studio featuring animations and clean design to highlight their services and creative space.
+                </p>
+                <div class="tech-badges">
+                    <span class="tech-badge">Bootstrap</span>
+                    <span class="tech-badge">HTML</span>
+                    <span class="tech-badge">Tailwind CSS</span>
+                    <span class="tech-badge">AOS.js</span>
+                </div>
+                <div class="project-links">
+                    <a href="https://evilshxt.github.io/afrocity/index.html" class="project-link demo-link" target="_blank">Live Demo</a>
+                    <a href="#" class="project-link code-link" target="_blank">View Code</a>
+                </div>
+            </div>
+          </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- JavaScript Files -->
+  <script src="js/script.js"></script>
+  <script src="js/projects.js"></script>
+  
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+        // Load saved theme
+        const savedTheme = localStorage.getItem('portfolioTheme');
+        if (savedTheme) {
+            document.documentElement.className = savedTheme;
+        }
+    });
+  </script>
+</body>
+</html>

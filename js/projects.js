@@ -22,6 +22,14 @@ const projects = [
         tech: ["Bootstrap", "HTML", "Tailwind CSS", "AOS.js"],
         demoUrl: "https://evilshxt.github.io/afrocity/index.html",
         codeUrl: "null.html"
+    },
+    {
+        title: "Backend TO-DO Website",
+        description: "A full-featured TO-DO application with advanced functionality including backend firebase storage, theme switching, and analytics to track your productivity.",
+        image: "css/assets/todofire.png",
+        tech: ["Bootstrap", "HTML", "Vanilla JS-ES6", "Firebase"],
+        demoUrl: "https://evilshxt.github.io/todofire/",
+        codeUrl: "null.html"
     }
 ];
 
